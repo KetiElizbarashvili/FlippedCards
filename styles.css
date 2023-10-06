@@ -1,0 +1,116 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* 10px */
+}
+
+body {
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-grey-light: #f7f7f7;
+    --color-light: #ffb900;
+    --color-dark: #ff7730;
+}
+
+/* MIXINS */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* GRID */
+.row {
+    max-width: 114rem;
+    width: 75%;
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: 8rem; 
+    }
+
+    [class^="col-"] {
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: 6rem; 
+        }
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * 6rem) / 3); 
+    }
+}
+
+/* CARDS */
+.section-tours {
+    background-color: var(--color-grey-light);
+    padding: 2rem;
+}
+
+.card {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 35rem;
+    margin-top: 200px;
+    cursor: pointer;
+}
+
+.card__side {
+    font-size: 2rem;
+    font-family: 'Major Mono Display', monospace;
+    text-align: center;
+    height: 35rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 1.5rem 4rem rgba(var(--color-black), 0.15);
+}
+
+.card__side--front {
+    background-color: var(--color-black);
+    background-image: url('second.jpg');
+
+}
+
+.card__side--back {
+    transform: rotateY(180deg);
+    background-image: linear-gradient(to right bottom, var(--color-light), var(--color-dark));
+    background-image: url('polina-kondrashova-fhrwah2hmnm-unsplash.jpg');
+    width: 100%;
+    height: 100%;
+ 
+}
+
+.card:hover .card__side--front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .card__side--back {
+    transform: rotateY(0);
+}
+
+.card__text {
+    color: var(--color-white);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ 
