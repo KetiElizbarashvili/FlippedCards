@@ -98,9 +98,6 @@ body {
  
 }
 
-.card:hover .card__side--front {
-    transform: rotateY(-180deg);
-}
 
 .card:hover .card__side--back {
     transform: rotateY(0);
